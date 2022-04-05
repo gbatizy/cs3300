@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects or /projects.json
   def index
-    @projects = Projects.all
+    @projects = Project.all
   end
 
   # GET /projects/1 or /projects/1.json
@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-    @project = Projects.new
+    @project = Project.new
   end
 
   # GET /projects/1/edit
@@ -21,11 +21,11 @@ class ProjectsController < ApplicationController
 
   # POST /projects or /projects.json
   def create
-    @project = Projects.new(project_params)
+    @project = Project.new(project_params)
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to project_url(@project), notice: "Projects was successfully created." }
+        format.html { redirect_to project_url(@project), notice: "Project was successfully created." }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to project_url(@project), notice: "Projects was successfully updated." }
+        format.html { redirect_to project_url(@project), notice: "Project was successfully updated." }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class ProjectsController < ApplicationController
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to projects_index_url, notice: "Projects was successfully destroyed." }
+      format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -60,7 +60,7 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = Projects.find(params[:id])
+      @project = Project.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

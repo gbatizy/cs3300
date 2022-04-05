@@ -10,36 +10,36 @@ class ProjectsTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Projects"
   end
 
-  test "creating a Projects" do
+  test "creating a Project" do
     visit projects_url
-    click_on "New Projects"
+    click_on "New Project"
 
     fill_in "Description", with: @project.description
     fill_in "Title", with: @project.title
-    click_on "Create Projects"
+    click_on "Create Project"
 
-    assert_text "Projects was successfully created"
+    assert_text "Project was successfully created"
     click_on "Back"
   end
 
-  test "updating a Projects" do
+  test "updating a Project" do
     visit projects_url
     click_on "Edit", match: :first
 
     fill_in "Description", with: @project.description
     fill_in "Title", with: @project.title
-    click_on "Update Projects"
+    click_on "Update Project"
 
-    assert_text "Projects was successfully updated"
+    assert_text "Project was successfully updated"
     click_on "Back"
   end
 
-  test "destroying a Projects" do
+  test "destroying a Project" do
     visit projects_url
     page.accept_confirm do
       click_on "Destroy", match: :first
     end
 
-    assert_text "Projects was successfully destroyed"
+    assert_text "Project was successfully destroyed"
   end
 end

@@ -6,7 +6,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get projects_index_url
+    get projects_url
     assert_response :success
   end
 
@@ -16,11 +16,11 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create project" do
-    assert_difference('Projects.count') do
-      post projects_index_url, params: { project: { description: @project.description, title: @project.title } }
+    assert_difference('Project.count') do
+      post projects_url, params: { project: { description: @project.description, title: @project.title } }
     end
 
-    assert_redirected_to project_url(Projects.last)
+    assert_redirected_to project_url(Project.last)
   end
 
   test "should show project" do
@@ -39,10 +39,10 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy project" do
-    assert_difference('Projects.count', -1) do
+    assert_difference('Project.count', -1) do
       delete project_url(@project)
     end
 
-    assert_redirected_to projects_index_url
+    assert_redirected_to projects_url
   end
 end
