@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'mini_racer'
 gem 'simplecov', require: false, group: :test
+gem 'devise'
 
 group :production do
   gem 'pg', '~> 0.21' # for Heroku deployment
