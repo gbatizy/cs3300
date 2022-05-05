@@ -1,17 +1,63 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cs3300</title>
+    <title>CS3300 Portfolio</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.0/examples/jumbotron/jumbotron.css" rel="stylesheet">
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" style="color:white;">CS3300 Portfolio</a>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <%= link_to 'Home', projects_path, :class => 'nav-link' %>
+          </li>
+          <% if user_signed_in? %>
+            <li class="nav-item active">
+              <%= link_to 'New Project', new_project_path, :class => 'nav-link' %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link' %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => 'nav-link'  %>
+            </li>
+          <% else %>
+            <li class="nav-item active">
+              <%= link_to "Sign up", new_user_registration_path, :class => 'nav-link'  %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to "Sign in", new_user_session_path, :class => 'nav-link'  %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <p class="notice" style="color:green;"><%= notice %></p>
+      <p class="alert" style="color:green;"><%= alert %></p>
+    </nav>
+    
     <%= yield %>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
   </body>
 </html>
